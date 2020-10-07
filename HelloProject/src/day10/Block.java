@@ -1,4 +1,4 @@
-package day09;
+package day10;
 
 public class Block {
 	public int kind = 7;
@@ -12,6 +12,13 @@ public class Block {
 	
 	public Block(int kind) {
 		this.kind = kind;
+	}
+	
+	public void init() {
+		kind = (int)(Math.random()*7+1);
+		status = 1;
+		i = 1;
+		j = 5;
 	}
 	
 	@Override
