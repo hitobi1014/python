@@ -4,18 +4,20 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Tetris03 extends JFrame {
 
 	private JPanel contentPane;
-	
-	public Block block = new Block((int)(Math.random()*7+1));
-	
+	JLabel lblRow ;
+	public Block block = new Block();
+	private boolean flag = true;
 	public JLabel[][] lbl2d = new JLabel[20][10];
 	
 	public int[][] block2d = new int[20][10];
@@ -50,18 +52,19 @@ public class Tetris03 extends JFrame {
 		});
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 270, 550);
+		setBounds(100, 100, 523, 550);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblDisp = new JLabel("지워야할 행");
+		lblDisp.setBounds(298, 30, 86, 15);
+		contentPane.add(lblDisp);
+		lblRow = new JLabel("10");
+		lblRow.setBounds(403, 30, 57, 15);
+		contentPane.add(lblRow);
 		setBlock2DWithBlock();
-		
-		stack2d[19][0]=11;
-		stack2d[19][1]=11;
-		stack2d[19][2]=11;
-		stack2d[19][3]=11;
 		
 		for(int i=0; i<20; i++) {
 			for(int j=0; j<10; j++) {
@@ -78,26 +81,41 @@ public class Tetris03 extends JFrame {
 		System.out.println(block);
 		print2D(block2d);
 		print2D(stack2d);
+		Thread a = new Thread() {
+			public void run() {
+				while(true) {
+					try {
+						sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					realPress(40);
+				}
+			}; 
+		};
+		
+			a.start();
 	}
 	
 	public void myrender() {
 		for(int i=0; i<scrin2d.length; i++) {
 			for(int j=0; j<scrin2d[i].length; j++) {         
 				if(scrin2d[i][j]==0) {lbl2d[i][j].setBackground(new Color(56,56,56));}
-				if(scrin2d[i][j]==1) {lbl2d[i][j].setBackground(new Color(255-(10*1),0,0));}
-				if(scrin2d[i][j]==2) {lbl2d[i][j].setBackground(new Color(255-(10*2),0,0));}
-				if(scrin2d[i][j]==3) {lbl2d[i][j].setBackground(new Color(255-(10*3),0,0));}
-				if(scrin2d[i][j]==4) {lbl2d[i][j].setBackground(new Color(255-(10*4),0,0));}
-				if(scrin2d[i][j]==5) {lbl2d[i][j].setBackground(new Color(255-(10*5),0,0));}
-				if(scrin2d[i][j]==6) {lbl2d[i][j].setBackground(new Color(255-(10*6),0,0));}
-				if(scrin2d[i][j]==7) {lbl2d[i][j].setBackground(new Color(255-(10*7),0,0));}
-				if(scrin2d[i][j]==11) {lbl2d[i][j].setBackground(new Color(0,0,255-(10*1)));}
-				if(scrin2d[i][j]==12) {lbl2d[i][j].setBackground(new Color(0,0,255-(10*2)));}
-				if(scrin2d[i][j]==13) {lbl2d[i][j].setBackground(new Color(0,0,255-(10*3)));}
-				if(scrin2d[i][j]==14) {lbl2d[i][j].setBackground(new Color(0,0,255-(10*4)));}
-				if(scrin2d[i][j]==15) {lbl2d[i][j].setBackground(new Color(0,0,255-(10*5)));}
-				if(scrin2d[i][j]==16) {lbl2d[i][j].setBackground(new Color(0,0,255-(10*6)));}
-				if(scrin2d[i][j]==17) {lbl2d[i][j].setBackground(new Color(0,0,255-(10*7)));}
+				if(scrin2d[i][j]==1) {lbl2d[i][j].setBackground(new Color(252,252,12));}
+				if(scrin2d[i][j]==2) {lbl2d[i][j].setBackground(new Color(1,239,243));}
+				if(scrin2d[i][j]==3) {lbl2d[i][j].setBackground(new Color(243,1,9));}
+				if(scrin2d[i][j]==4) {lbl2d[i][j].setBackground(new Color(53,243,1));}
+				if(scrin2d[i][j]==5) {lbl2d[i][j].setBackground(new Color(239,1,243));}
+				if(scrin2d[i][j]==6) {lbl2d[i][j].setBackground(new Color(243,130,1));}
+				if(scrin2d[i][j]==7) {lbl2d[i][j].setBackground(new Color(1,77,243));}
+				if(scrin2d[i][j]==11) {lbl2d[i][j].setBackground(new Color(252,252,12));}
+				if(scrin2d[i][j]==12) {lbl2d[i][j].setBackground(new Color(1,239,243));}
+				if(scrin2d[i][j]==13) {lbl2d[i][j].setBackground(new Color(243,1,9));}
+				if(scrin2d[i][j]==14) {lbl2d[i][j].setBackground(new Color(53,243,1));}
+				if(scrin2d[i][j]==15) {lbl2d[i][j].setBackground(new Color(239,1,243));}
+				if(scrin2d[i][j]==16) {lbl2d[i][j].setBackground(new Color(243,130,1));}
+				if(scrin2d[i][j]==17) {lbl2d[i][j].setBackground(new Color(1,77,243));}
 			}
 		}
 	}
@@ -111,12 +129,17 @@ public class Tetris03 extends JFrame {
 	}
 	
 	public void mypress(KeyEvent e) {
+		realPress(e.getKeyCode());
+	}
+	public void realPress(int keycode) {
+		if (!flag) {return ;}
+		
 		boolean flag_col_bound = false;
 		int pre_status = block.status;
 		int pre_i = block.i;
 		int pre_j = block.j;
 		boolean flag_down = false;
-		int keycode = e.getKeyCode();
+//		int keycode = e.getKeyCode();
 		// 위 38 왼쪽 37 오른쪽 39 아래 40
 		if(keycode == 38) {
 			changeBlockStatus();
@@ -128,7 +151,7 @@ public class Tetris03 extends JFrame {
 		if(keycode == 37) {block.j--;}
 		if(keycode == 39) {block.j++;}
 		if(keycode == 32) {block.i = 19;}
-		System.out.println(block);
+//		System.out.println(block);
 		
 		try {
 			setBlock2DWithBlock();
@@ -146,14 +169,72 @@ public class Tetris03 extends JFrame {
 			moveStackBlock2Scrin();
 			if(flag_down) {
 				moveBlock2Stack();
+				
+				ArrayList<String> notFullStack = getNotFullStack();
+				int cnt10 = 20 - notFullStack.size();
+				System.out.println("cnt10 : " + cnt10);
+				int cnt = Integer.parseInt(lblRow.getText());
+				int cnt_setting = cnt - cnt10;
+				if(cnt_setting<=0) {
+					JOptionPane.showMessageDialog(null, "이겼습니다");
+					flag = false;
+					return;
+				}
+				if(stack2d[5][0]>0 || stack2d[5][1]>0 || stack2d[5][2]>0 || stack2d[5][3]>0 || stack2d[5][4]>0 || 
+						stack2d[5][5]>0 || stack2d[5][6]>0 || stack2d[5][7]>0 || stack2d[5][8]>0 || stack2d[5][9]>0 ) {
+					JOptionPane.showMessageDialog(null, "졌습니다");
+					flag = false;
+					return;
+				}
+				
+				for(int i=0; i<cnt10;i++) {
+					cnt--;
+					lblRow.setText(cnt+"");
+					notFullStack.add(0,"0,0,0,0,0,0,0,0,0,0");
+				}
+				
+				for(int i=0; i<notFullStack.size(); i++) {
+					String line = notFullStack.get(i);
+					String[] data = line.split(",");
+					stack2d[i][0]=Integer.parseInt(data[0]);
+					stack2d[i][1]=Integer.parseInt(data[1]);
+					stack2d[i][2]=Integer.parseInt(data[2]);
+					stack2d[i][3]=Integer.parseInt(data[3]);
+					stack2d[i][4]=Integer.parseInt(data[4]);
+					
+					stack2d[i][5]=Integer.parseInt(data[5]);
+					stack2d[i][6]=Integer.parseInt(data[6]);
+					stack2d[i][7]=Integer.parseInt(data[7]);
+					stack2d[i][8]=Integer.parseInt(data[8]);
+					stack2d[i][9]=Integer.parseInt(data[9]);
+				}
+				
+				
 				block.init();
 				setBlock2DWithBlock();
 			}
 		}
-		System.out.println("flag_collision : " + flag_collision);
-		System.out.println("flag_col_bound : " + flag_col_bound);
+//		System.out.println("flag_collision : " + flag_collision);
+//		System.out.println("flag_col_bound : " + flag_col_bound);
 		myrender();
-		print2D(scrin2d);
+//		print2D(scrin2d);
+	}
+	
+	public ArrayList getNotFullStack() {
+		ArrayList<String> stack_temp = new ArrayList<>();
+		
+		for(int i=0; i<stack2d.length; i++) {
+			int[] temp = stack2d[i];
+			if(temp[0]>0 && temp[1]>0 && temp[2]>0 && temp[3]>0 && temp[4]>0 && temp[5]>0 && temp[6]>0 && temp[7]>0 && temp[8]>0 && temp[9]>0 ) 
+			{
+				
+			}else {
+				String str_line = 	temp[0] + "," +temp[1] + "," +temp[2] + "," +temp[3] + "," +temp[4] + "," +
+									temp[5] + "," +temp[6] + "," +temp[7] + "," +temp[8] + "," +temp[9] + "," ;
+				stack_temp.add(str_line);
+			}
+		}
+		return stack_temp;
 	}
 	
 	public void moveBlock2Stack() {
