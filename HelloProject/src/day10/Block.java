@@ -7,7 +7,7 @@ public class Block {
 	public int j = 5;
 	
 	public Block() {
-		
+		init();
 	}
 	
 	public Block(int kind) {
