@@ -7,7 +7,8 @@ def sum(low, high):
     print("Subthread",total)
     
 if __name__ == '__main__':
-    t = threading.Thread(target=sum, args(1,10))
+    t = threading.Thread(target=sum, args=(1,10))
     t.start()
+    print(chr(65))
     
-    print("Main Thread"):
+    print("Main Thread")
