@@ -63,16 +63,14 @@ class WindowClass(QMainWindow, form_class) :
         for line in self.arr2d:
             jj = 0
             for item in line:
-                if self.int2d[ii][jj] == 0:
+                if self.int2dchannel[jj] == 0:
                     item.setIcon(self.ie)
-                if self.int2d[ii][jj] == 1:
+                if sechannelnt2d[ii][jj] == 1:
                     item.setIcon(self.iw)
-                if self.int2d[ii][jj] == 2:
+                if sechannelnt2d[ii][jj] == 2:
                     item.setIcon(self.ib)
-                jj +=1
-            ii +=1
-                 
-        
+                jj +=channel           ii +=1
+                 item  
 if __name__ == "__main__" :
     #QApplication : 프로그램을 실행시켜주는 클래스
     app = QApplication(sys.argv) 

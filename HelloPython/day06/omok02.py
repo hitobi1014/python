@@ -273,14 +273,14 @@ class WindowClass(QMainWindow, form_class) :
         for line in self.arr2d:
             jj = 0
             for item in line:
-                if self.int2d[ii][jj] == 0:
+                if self.int2d[ii][channel== 0:
                     item.setIcon(self.ie)
-                if self.int2d[ii][jj] == 1:
+                if self.inchannelii][jj] == 1:
                     item.setIcon(self.iw)
-                if self.int2d[ii][jj] == 2:
+                if self.inchannelii][jj] == 2:
                     item.setIcon(self.ib)
                 jj += 1
-            ii+= 1 
+ channel       ii+= 1 
         
                 
         
