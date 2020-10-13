@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>Naver Open API - local ::'대전 용문동 맛집'</title>
+		<link>https://search.naver.com</link>
+		<description>Naver Search Result</description>
+		<lastBuildDate>Tue, 13 Oct 2020 17:02:45 +0900</lastBuildDate>
+		<total>5</total>
+		<start>1</start>
+		<display>5</display>
+		<item>
+			<title>충무 할매 낙지볶음</title>
+			<link></link>
+			<category>한식&gt;낙지요리</category>
+			<description></description>
+			<telephone></telephone>
+			<address>대전광역시 서구 용문동 277-4</address>
+			<roadAddress>대전광역시 서구 도산로 340</roadAddress>
+			<mapx>345421</mapx>
+			<mapy>415147</mapy>
+		</item>
+		<item>
+			<title>승참치테이크아웃</title>
+			<link>http://www.wintuna-takeout.com</link>
+			<category>한식&gt;생선회</category>
+			<description></description>
+			<telephone></telephone>
+			<address>대전광역시 서구 용문동 593-9</address>
+			<roadAddress>대전광역시 서구 용문로 77</roadAddress>
+			<mapx>345530</mapx>
+			<mapy>415312</mapy>
+		</item>
+		<item>
+			<title>바이러브하니</title>
+			<link>http://www.instagram.com/by_lovehany</link>
+			<category>카페,디저트&gt;베이커리</category>
+			<description></description>
+			<telephone></telephone>
+			<address>대전광역시 서구 용문동 244-60</address>
+			<roadAddress>대전광역시 서구 계룡로 663-9 3호</roadAddress>
+			<mapx>345904</mapx>
+			<mapy>415378</mapy>
+		</item>
+		<item>
+			<title>카페씨엘로</title>
+			<link>https://www.instagram.com/cafe__cielo/</link>
+			<category>카페,디저트&gt;카페</category>
+			<description></description>
+			<telephone></telephone>
+			<address>대전광역시 서구 용문동 255-59 1층</address>
+			<roadAddress>대전광역시 서구 계룡로 676 1층</roadAddress>
+			<mapx>345925</mapx>
+			<mapy>415205</mapy>
+		</item>
+		<item>
+			<title>카페천국 대전점</title>
+			<link></link>
+			<category>음식점&gt;카페,디저트</category>
+			<description></description>
+			<telephone></telephone>
+			<address>대전광역시 서구 용문동 276-4 B동 평화빌 1층 101호</address>
+			<roadAddress>대전광역시 서구 도산로 351 B동 평화빌 1층 101호</roadAddress>
+			<mapx>345494</mapx>
+			<mapy>415307</mapy>
+		</item>
+	</channel>
+</rss>
