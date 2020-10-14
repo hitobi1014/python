@@ -8,11 +8,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 import cx_Oracle
 
 form_class = uic.loadUiType("mymenu.ui")[0]
-conn = cx_Oracle.connect("DAL/java@localhost:1521/xe")
-cursor=conn.cursor()
 
 class WindowClass(QMainWindow, form_class) :
     def __init__(self) :
+        self.conn = cx_Oracle.connect("DAL/java@localhost:1521/xe")
+        self.cursor=self.conn.cursor()
         super().__init__()
         self.setupUi(self)
         self.btn1.clicked.connect(self.btn1Function)
@@ -20,7 +20,7 @@ class WindowClass(QMainWindow, form_class) :
         options = Options()
         options.headless = False
         self.browser = webdriver.Chrome(executable_path="./chromedriver.exe", options=options)
-        self.browser.get("https://place.map.kakao.com/1216414362")
+        self.browser.get("https://place.map.kakao.com/17733090")
         
 #         self.browser.get("http://localhost/HelloWeb/hello.jsp")
     
@@ -41,10 +41,13 @@ class WindowClass(QMainWindow, form_class) :
 #             print(title2)
             sql = "insert into MYMENU values(:1,:2,:3)"
             data = (title2,menu_name,menu_price)
-            cursor.execute(sql,data)
-            conn.commit() 
-        cursor.close()
-        conn.close()
+            self.cursor.execute(sql,data)
+            self.conn.commit() 
+            
+    def __del__(self):
+        self.cursor.close()
+        self.conn.close()
+        
 
 if __name__ == "__main__" :
     app = QApplication(sys.argv) 
