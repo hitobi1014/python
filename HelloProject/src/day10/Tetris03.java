@@ -151,7 +151,6 @@ public class Tetris03 extends JFrame {
 		if(keycode == 37) {block.j--;}
 		if(keycode == 39) {block.j++;}
 		if(keycode == 32) {block.i = 19;}
-//		System.out.println(block);
 		
 		try {
 			setBlock2DWithBlock();
@@ -225,7 +224,17 @@ public class Tetris03 extends JFrame {
 		
 		for(int i=0; i<stack2d.length; i++) {
 			int[] temp = stack2d[i];
-			if(temp[0]>0 && temp[1]>0 && temp[2]>0 && temp[3]>0 && temp[4]>0 && temp[5]>0 && temp[6]>0 && temp[7]>0 && temp[8]>0 && temp[9]>0 ) 
+			if(
+				temp[0]>0 && 
+				temp[1]>0 && 
+				temp[2]>0 && 
+				temp[3]>0 && 
+				temp[4]>0 && 
+				temp[5]>0 && 
+				temp[6]>0 && 
+				temp[7]>0 && 
+				temp[8]>0 && 
+				temp[9]>0 ) 
 			{
 				
 			}else {
